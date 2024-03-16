@@ -1,0 +1,25 @@
+name: Generate Commits
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Schedule to run daily at midnight
+
+jobs:
+  generate-commits:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Generate Commits
+        run: |
+          cd $GITHUB_WORKSPACE
+          num_commits=$((RANDOM % 7 + 2))
+          for ((i=1; i<=$num_commits; i++)); do
+              commit_message="Commit $i: $(openssl rand -base64 12)"
+              echo "Update js" > "file$i.txt"
+              git add .
+              git commit -m "$commit_message"
+          done
+          git push ShriBuzz/Monster-world $GITHUB_REF
