@@ -14,8 +14,8 @@ jobs:
 
       - name: Set up Git
         run: |
-          git config --global user.email "shrijan.buzz.5@gmail.com"
-          git config --global user.name "Shrijan Bajracharya"
+        git config user.email "shrijan.buzz.5@gmail.com"
+        git config user.name "Shrijan Bajracharya"
 
       - name: Set up Node.js
         uses: actions/setup-node@v3 # Update to v3
