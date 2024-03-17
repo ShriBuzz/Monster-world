@@ -1,0 +1,25 @@
+name: 'Git Commit Lit!!!!'
+description: 'Random Git Commits that makes your Github Contribution Graph lit!'
+inputs:
+  lower-bound: 
+    description: 'Lower bound of number of commits per day'
+    required: true
+    default: '1'
+  upper-bound:  
+    description: 'Upper bound of number of commits per day'
+    required: true
+    default: '8' 
+  user-name: 
+    description: 'Shrijan Bajracharya'
+    required: true
+  user-email: 
+    description: 'shrijan.buzz.5@gmail.com''
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.lower-bound }}
+    - ${{ inputs.upper-bound }}
+    - ${{ inputs.user-name }}
+    - ${{ inputs.user-email }}
