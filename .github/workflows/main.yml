@@ -1,0 +1,24 @@
+on: 
+  workflow_dispatch: {}
+  schedule:
+    # Makes commit(s) at 9:30am daily
+    # Change to whatever cron expression you like
+    - cron: "30 9 * * *"
+
+jobs:
+  lit-job:
+    runs-on: ubuntu-latest
+    name: lit commits
+    steps:
+      - uses: actions/checkout@v3
+      - name: make commits
+        uses: ShriBuzz/Monster-world@main
+        with:
+          # Defines the range of number of commits
+          # Change to your desierd lower and upper bound
+          lower-bound: 1
+          upper-bound: 8
+          # Change to your GitHub username
+          user-name: Shrijan Bajracharya
+          # Change to your email used for GitHub account
+          user-email: shrijan.buzz.5@gmail.com
